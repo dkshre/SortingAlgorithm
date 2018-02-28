@@ -14,6 +14,19 @@ namespace SortingAlgorithm
 
         }
 
+        static void QuickSort(int[] arr, int start, int end){
+            if(start>= end) return;
+            int pIndex = Program.Partition(arr, start, end);
+            Program.QuickSort(arr, start, pIndex-1);
+            Program.QuickSort(arr, pIndex+1, end);
+
+        }
+
+        //Partition for Quick sort
+        static int  Partition(int[] arr, int start, int end){
+          throw new    NotImplementedException();
+            // return 0;
+        }
         static void PrintArray(int[] arr, string comment){
             Console.WriteLine(comment);
                 foreach(int v in arr){
