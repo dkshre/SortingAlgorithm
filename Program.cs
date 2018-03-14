@@ -7,10 +7,11 @@ namespace SortingAlgorithm
     {
         static void Main(string[] args)
         {
-            int [] arr = new [] {7,4,1,5,3};
-            Program.MergeSort(arr);
+            int [] arr = new [] {7,2,1,6,8,5,3,4};
+            Program.QuickSort(arr,0, arr.Length-1);
 
-            Program.PrintArray(arr, "Merge Sort");
+            //Program.SelectionSort(arr,arr.Length);
+            Program.PrintArray(arr, "Quick Sort");
 
         }
 
@@ -24,8 +25,16 @@ namespace SortingAlgorithm
 
         //Partition for Quick sort
         static int  Partition(int[] arr, int start, int end){
-          throw new    NotImplementedException();
-            // return 0;
+          int pIndex = start;
+          int pivot = arr[end];
+          for(int i = start;i <= end-1; i++){
+              if(arr[i] <= arr[end]){
+                  Program.Swap(ref arr[pIndex],ref arr[i]);
+                  pIndex = pIndex +1;
+              }
+          }
+          Program.Swap(ref arr[pIndex],ref arr[end]);
+          return pIndex;
         }
         static void PrintArray(int[] arr, string comment){
             Console.WriteLine(comment);
@@ -120,11 +129,8 @@ namespace SortingAlgorithm
                   if(a[j]< a[iMin]){
                       iMin = j;
                   }
-              }
-
-             int temp = a[i];
-             a[i] = a[iMin];
-             a[iMin] = temp;    
+              }            
+            Program.Swap(ref a[i], ref a[iMin]);   
           }
         }
 
